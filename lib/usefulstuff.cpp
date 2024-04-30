@@ -1,6 +1,7 @@
 #include <iostream>
 #include "usefulstuff.h"
 #include <vector>
+#include <cstring>
 
 using namespace std;
 
@@ -160,4 +161,129 @@ int findMI(int a, int n)
     if (t1 < 0)
         return (n + t1);
     return t1;
+}
+
+char *caesar_cipher(const char *text, int key, int mode)
+{
+    char *result = (char *)malloc((strlen(text) + 1) * sizeof(char));
+
+    if (mode == 1)
+    {
+
+        char ch;
+
+        for (int i = 0; text[i] != '\0'; i++)
+        {
+            ch = text[i];
+            // Check for valid characters.
+            if (isalnum(ch))
+            {
+
+                // Lowercase characters.
+                if (islower(ch))
+                {
+                    ch = (ch - 'a' + key) % 26 + 'a';
+                }
+                // Uppercase characters.
+                if (isupper(ch))
+                {
+                    ch = (ch - 'A' + key) % 26 + 'A';
+                }
+
+                // Numbers.
+                if (isdigit(ch))
+                {
+                    ch = (ch - '0' + key) % 10 + '0';
+                }
+            }
+            // Invalid character.
+            else
+            {
+                printf("Invalid Message");
+            }
+
+            // Adding encoded answer.
+
+            result[i] = ch;
+        }
+        return result;
+    }
+    else if (mode == 2)
+    {
+        char ch;
+
+        for (int i = 0; text[i] != '\0'; i++)
+        {
+            ch = text[i];
+            // Check for valid characters.
+            if (isalnum(ch))
+            {
+
+                // Lowercase characters.
+                if (islower(ch))
+                {
+                    ch = (ch - 'a' - key) % 26 + 'a';
+                }
+                // Uppercase characters.
+                if (isupper(ch))
+                {
+                    ch = (ch - 'A' - key) % 26 + 'A';
+                }
+
+                // Numbers.
+                if (isdigit(ch))
+                {
+                    ch = (ch - '0' - key) % 10 + '0';
+                }
+            }
+            // Invalid character.
+            else
+            {
+                printf("Invalid Message");
+            }
+
+            // Adding encoded answer.
+            result[i] = ch;
+        }
+
+        result[strlen(text)] = '\0';
+
+        return result;
+    }
+}
+
+char *monoalph_cipher(char *text, int mode)
+{
+    return nullptr;
+}
+
+char *playfair_cipher(char *plaintext, int key)
+{
+    return nullptr;
+}
+
+char *hill_cipher(char *plaintext, int key)
+{
+    return nullptr;
+}
+
+char *vigenere_cipher(char *plaintext, int key)
+{
+    return nullptr;
+}
+
+char *vernam_cipher(char *plaintext, int key)
+{
+    return nullptr;
+}
+
+char *OTP(const char *text, int key, int mode)
+{
+    return nullptr;
+}
+
+int LCG(int a, int c, int m, unsigned int seed)
+{
+    seed = (a * seed * c) % m;
+    return seed;
 }
