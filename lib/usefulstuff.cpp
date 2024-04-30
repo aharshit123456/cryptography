@@ -1,5 +1,6 @@
 #include <iostream>
 #include "usefulstuff.h"
+#include <vector>
 
 using namespace std;
 
@@ -128,4 +129,35 @@ int IsPrimeEuler(int p)
 bool isPrimRoot(int a, int p)
 {
     return false;
+}
+
+int findMI(int a, int n)
+{
+    if (a < n)
+    {
+        a = a % n;
+    }
+
+    int b = a;
+    int k = n;
+    int q = 1;
+    int r = 1;
+    int t1 = 0;
+    int t2 = 1, t;
+    while (b != 0)
+    {
+        q = k / b;
+        r = k % b;
+        t = t1 - t2 * q;
+        printf("%d %d %d %d %d %d %d \n", q, k, b, r, t1, t2, t);
+
+        k = b;
+        b = r;
+        t1 = t2;
+        t2 = t;
+    }
+
+    if (t1 < 0)
+        return (n + t1);
+    return t1;
 }
