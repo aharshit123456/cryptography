@@ -10,7 +10,7 @@ Pseudorandom Number Generator
 
 Key -> Generator -> Key Stream
 [Linear Congruential Generator](https://en.wikipedia.org/wiki/Linear_congruential_generator) <br>
-{$\displaystyle X_{n+1}=\left(aX_{n}+c\right){\bmod {m}}$}
+$\displaystyle X_{n+1}=\left(aX_{n}+c\right){\bmod {m}}$
 
 where X is the sequence, m the modulo, a the multiplier, c the increment and X0 the seed.
 
